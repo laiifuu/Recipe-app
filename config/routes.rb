@@ -6,10 +6,9 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   resources :foods, only: [:index]
-  resources :inventores, only: [:show, :index]
+  resources :inventories, only: [:show, :index]
   resources :recipes, only: [:show, :index]
   resources :public_recipes, only: [:index]
-  resources :general_shopping_list, only: [:index]
   resources :shopping_list, only: [:index]
 
 end

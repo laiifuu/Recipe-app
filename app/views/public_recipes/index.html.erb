@@ -1,0 +1,17 @@
+<section class="public-recipes-section">  
+  <h1>Public Recipes</h1>
+  <div class="recipes-container">
+    <ul class="recipes-list"> 
+      <% @public_recipes.each do |recipe| %>
+        <li>
+          <h2> <%= recipe.name %> </h2>
+          <p> <%= recipe.description %> </p>
+          
+          <div>
+            <%= button_to "Check Recipe Details", recipe_path(recipe.id), method: :get%>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</section>

@@ -1,0 +1,13 @@
+<% @inventories.each do |inv| %>
+    <div>
+        <h2> 
+            <%= link_to inv.name, inventory_path(inv.id) %>
+        </h2>
+        <% if can? :destroy, inv %>
+            <%= button_to "Remove", inventory_path(inv.id), method: :delete, data: { turbo: false } %>
+        <% end %>
+    </div>
+    <div>
+        So much text and lorem ipsum stuff So much text and lorem ipsum stuff So much text and lorem ipsum stuff So much text and lorem ipsum stuff
+    </div>
+<% end %>

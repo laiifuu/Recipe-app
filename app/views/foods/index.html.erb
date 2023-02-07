@@ -13,8 +13,8 @@
       <th>Unit price</th>
       <th>Actions</th>
     </tr>
-    <% @user.inventories.includes(:inventory_foods).each do |inventory| %>
-      <% inventory.inventory_foods.includes(:food).each do |intfood| %>
+    <% @user.inventories.includes(:inventory_food).each do |inventory| %>
+      <% inventory.inventory_food.includes(:food).each do |intfood| %>
         <%= render template: 'shared/food', locals: { food: intfood.food } %>
       <% end %>
     <% end %>

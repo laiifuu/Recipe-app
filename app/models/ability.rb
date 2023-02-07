@@ -1,10 +1,8 @@
-# frozen_string_literal: true
-
 class Ability
   include CanCan::Ability
 
   def initialize(user)
-      can :destroy, Inventory, user_id: user.id
+    can :destroy, Inventory, user_id: user.id
     # Define abilities for the user here. For example:
     #
     #   return unless user.present?

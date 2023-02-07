@@ -1,0 +1,22 @@
+<section class="recipes-section">  
+  <h1>My recipes</h1>
+  <div class="recipes-container">
+  <%= button_to "Add Recipe", new_recipe_path, method: :get%>
+    <ul class='"recipes-list'> 
+      <% @recipes.each do |recipe| %>
+        <li>
+          <h2> <%= recipe.name %> </h2>
+          <p> <%= recipe.description %> </p>
+          
+          <div>
+            <% if current_user.id == @user.id%>
+              <%= button_to "Delete Recipe", recipe_path(recipe.id), method: :delete, data: {turbo: false}%>
+            <% end %>
+            <%= button_to "Check Recipe Details", recipe_path(recipe.id), method: :get%>
+          </div>
+          
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</section>

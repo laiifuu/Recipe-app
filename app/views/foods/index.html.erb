@@ -1,0 +1,22 @@
+<div>
+
+  <%= link_to new_food_path do %>
+    <button type='button' name='create_food' class'button'>
+      Add food item
+    </button>
+  <% end %>
+
+  <table>
+    <tr>
+      <th>Food</th>
+      <th>Measurement Unit</th>
+      <th>Unit price</th>
+      <th>Actions</th>
+    </tr>
+    <% @user.inventories.includes(:inventory_food).each do |inventory| %>
+      <% inventory.inventory_food.includes(:food).each do |intfood| %>
+        <%= render template: 'shared/food', locals: { food: intfood.food } %>
+      <% end %>
+    <% end %>
+  </table>
+</div>

@@ -15,7 +15,7 @@
     </tr>
     <% @user.inventories.includes(:inventory_foods).each do |inventory| %>
       <% inventory.inventory_foods.includes(:food).each do |intfood| %>
-        <%= render template: 'food_shared/food', locals: { food: intfood.food } %>
+        <%= render template: 'shared/food', locals: { food: intfood.food } %>
       <% end %>
     <% end %>
   </table>

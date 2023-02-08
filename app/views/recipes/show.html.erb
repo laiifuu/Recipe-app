@@ -1,2 +1,65 @@
-<h1> Recipe Details </h1>
-<h2> <%= @recipe.name %> </h2>
+<article>
+  <h1> Recipe Details </h1>
+  <h2> <%= @recipe.name %> </h2>
+  <div class="recipe-details">
+    <div class="details"> 
+      <p>Preparation time: <%= @recipe.preparation_time %> 
+        <% if @recipe.preparation_time == 1 %>
+          hour
+        <% else %>
+          hours
+        <% end %>
+      </p>
+
+      <p>Cooking time: <%= @recipe.cooking_time %> 
+        <% if @recipe.cooking_time == 1 %>
+          hour
+        <% else %>
+          hours
+        <% end %>
+      </p>
+
+      <p>Steps go here...</p>
+
+    </div>
+    
+    <div class="public-toggle">
+      Status:  
+        <% if @recipe.public %>
+          <span>Public</span>
+        <% else %>
+          <span>Public</span>
+        <% end %>
+    </div>
+  </div>
+
+  <div class="recipe controls">
+    <%= button_to "Generate shopping list" %>
+    <%= button_to "Add ingredient", new_food_path, method: :get, params: {adding_ingredient: true, recipe_id: @recipe.id} %>
+  </div>
+
+  <section>
+  <table>
+  <thead>
+      <tr>
+          <th>Food</th>
+          <th>Quantity</th>
+          <th>Price</th>
+          <th>Value</th>
+          <th>Actions</th>
+      </tr>
+  </thead>
+  <tbody>
+    <% @foods.each do |food| %>
+      <tr>
+          <td><%= food.food_name %></td>
+          <td><%= food.quantity %> </td>
+          <td><%= food.price %> </td>
+          <td><%= food.value %> </td>
+          <td><a>Modify</a> <a href="">Remove</a></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+  </section>
+</article>

@@ -6,6 +6,10 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
+    @foods = RecipeFood
+      .joins(:food)
+      .select('name as food_name, quantity, price, quantity * price as value, recipe_id')
+      .where(recipe_id: params[:id])
   end
 
   def new

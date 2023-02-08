@@ -1,5 +1,6 @@
 class InventoriesController < ApplicationController
   def index
+    @user = current_user
     @inventories = Inventory.where(user_id: current_user)
   end
 
@@ -14,7 +15,8 @@ class InventoriesController < ApplicationController
   def edit; end
 
   def create
-    @inventory = Inventory.new(params.require(:inventory).permit(:name))
+    @inventory = Inventory.create(name: params[:name], user_id: current_user.id)
+    redirect_to inventories_path
   end
 
   def destroy

@@ -11,3 +11,7 @@
         So much text and lorem ipsum stuff So much text and lorem ipsum stuff So much text and lorem ipsum stuff So much text and lorem ipsum stuff
     </div>
 <% end %>
+<%= form_with model: @inventory, method: :post, url: inventories_path do |form| %>
+    <%= form.text_area :name %>
+    <%= form.submit "Add inventory" %>
+<% end %>

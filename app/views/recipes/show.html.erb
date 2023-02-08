@@ -56,7 +56,7 @@
           <td><%= food.quantity %> </td>
           <td><%= food.price %> </td>
           <td><%= food.value %> </td>
-          <td><a>Modify</a> <a href="">Remove</a></td>
+          <td><%= button_to "Remove", food_path(food.food_id), method: :delete %></td>
       </tr>
     <% end %>
   </tbody>

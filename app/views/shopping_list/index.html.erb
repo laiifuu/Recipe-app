@@ -1,0 +1,34 @@
+<div> Shopping List </div>
+
+<div> Amount of foods that you have to buy </div>
+
+<div> Total value of food needed </div>
+
+<div> <% @food_of_inventory.each do |food| %> 
+            <%= food.food.name %>
+        <% end %>
+    </div>
+
+
+<table>
+    <tr>
+        <th>Food</th>
+        <th>Quantity</th>
+        <th>Price</th>
+    </tr>
+
+    <% @arr1.each do |food| %>
+        <tr>
+            <td> <%= food[:name] %> </td>
+            <td> <%= food[:quantity] %> </td>
+            <td> <%= food[:price] %> </td>
+        </tr>
+    <% end %>
+    <% @arr2.each do |food| %>
+        <tr>
+            <td> <%= food[:name] %> </td>
+            <td> <%= food[:quantity] %> </td>
+            <td> <%= food[:price] %> </td>
+        </tr>
+    <% end %>
+</table>

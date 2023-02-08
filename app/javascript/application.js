@@ -19,4 +19,22 @@ import "controllers"
 //   menuBtn.addEventListener('click', menuToggle);
 // })
 
+let openPopupBtn = document.querySelector('.gen-popup');
+openPopupBtn.addEventListener('click', (e) => {
+  let popupSection = document.querySelector('.popup')
+  if (popupSection.classList.contains('hidden')){
+    popupSection.classList.remove('hidden');
+  }
+})
+
+let closePopupBtn = document.querySelector('.close-popup');
+closePopupBtn.addEventListener('click', (e) => {
+  let popupSection = document.querySelector('.popup')
+  if (!popupSection.classList.contains('hidden')){
+    popupSection.classList.add('hidden');
+  }
+})
+
+  
+
 

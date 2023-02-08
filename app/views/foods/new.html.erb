@@ -1,10 +1,18 @@
 <div class='create-food'>
   <h1 class='create-food-header'>Add a new food item</h1>
-
   <%= form_with model: @food, url: foods_path do |f| %>
     <%= f.text_field :name, placeholder: 'Name' %>
     <%= f.text_field :measurement_unit, placeholder: 'Measurement unit' %>
     <%= f.number_field :price, placeholder: 'Price ($)' %>
+    <%= f.collection_select :recipe_id, @recipes.order(:name),:id,:name, include_blank: true %>
+    <%= f.number_field :recipe_quantity, placeholder: 'Quantity (Recipe)' %>
+    <%= f.collection_select :inventory_id, @inventories.order(:name),:id,:name, include_blank: true %>
+    <%= f.number_field :inventory_quantity, placeholder: 'Quantity (Inventory)' %>
     <%= f.submit %>
   <% end %>
 </div>
+<%= link_to 'new_inventory_path' do %>
+  <button type='button' name='create_food' class'button'>
+    Add inventory
+  </button>
+<% end %>

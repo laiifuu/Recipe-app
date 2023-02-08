@@ -1,28 +1,31 @@
 class FoodsController < ApplicationController
   def index
     @user = current_user
-    # @user = User.includes(:inventories, inventories: [:inventory_foods]).find(current_user.id)
-    # @food = Food.where(id: @user.inventories.inventory_foods.food_id)
-    # @inventories = @user.inventories
-    # @foods = []
-    # @user.inventories.includes(:inventory_foods).each do |inventory|
-    #   inventory.inventory_foods.includes(:food).each do |intfood|
-    #     @foods.push(intfood.food)
-    #   end
-    # end
-    # @inventories.each do |inventory|
-
-    # end
+    @display_data = []
+    @user.inventories.includes(:inventory_food).each do |inventory|
+      inventory.inventory_food.includes(:food).each do |el|
+        @display_data << el.food
+      end
+    end
+    @user.recipes.includes(:recipe_food).each do |recipe|
+      recipe.recipe_food.includes(:food).each do |el|
+        @display_data << el.food unless @display_data.include? el.food
+      end
+    end
   end
 
   def new
     @food = Food.new
+    @inventories = Inventory.where(user_id: current_user)
+    @recipes = Recipe.where(user_id: current_user)
   end
 
   def create
     data = params[:food]
     new_food = Food.new(name: data[:name], measurement_unit: data[:measurement_unit], price: data[:price])
-    if new_food.save
+    if new_food.save && new_food.id?
+      RecipeFood.create(quantity: data[:recipe_quantity], recipe_id: data[:recipe_id], food_id: new_food.id)
+      InventoryFood.create(quantity: data[:inventory_quantity], inventory_id: data[:inventory_id], food_id: new_food.id)
       flash[:success] = 'Food has been added'
       redirect_to foods_path
     else
@@ -39,6 +42,6 @@ class FoodsController < ApplicationController
     else
       flash.now[:error] = 'Post could not be destroyed'
     end
-    redirect_to foods_path
+    redirect_to request.original_url
   end
 end

@@ -7,8 +7,8 @@ class FoodsController < ApplicationController
         @display_data << el.food
       end
     end
-    @user.recipes.includes(:recipe_food).each do |recipe|
-      recipe.recipe_food.includes(:food).each do |el|
+    @user.recipes.includes(:recipe_foods).each do |recipe|
+      recipe.recipe_foods.includes(:food).each do |el|
         @display_data << el.food unless @display_data.include? el.food
       end
     end

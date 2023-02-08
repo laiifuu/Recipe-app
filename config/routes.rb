@@ -9,6 +9,6 @@ Rails.application.routes.draw do
   resources :recipes, only: [:show, :index, :destroy, :create, :new]
   resources :inventories, only: [:show, :index, :destroy, :create, :new]
   resources :public_recipes, only: [:index]
-  resources :shopping_list, only: [:index]
+  resources :shopping_list, only: [:index, :create]
 
 end

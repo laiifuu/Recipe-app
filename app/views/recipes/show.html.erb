@@ -34,7 +34,7 @@
   </div>
 
   <div class="recipe controls">
-    <%= button_to "Generate shopping list" %>
+    <button class="gen-popup"> Generate shopping list </button>
     <%= button_to "Add ingredient", new_food_path, method: :get, params: {adding_ingredient: true, recipe_id: @recipe.id} %>
   </div>
 
@@ -63,3 +63,17 @@
 </table>
   </section>
 </article>
+
+<section class="popup hidden">
+  <button class="close-popup">close </button>
+  <h1>Generating Shopping List</h1>
+  <p>Choose an inventory to use</p>
+
+  link_to "Ruby on Rails search", controller: "searches", query: "ruby on rails"
+  <%= form_with url: shopping_list_index_path(recipe_id: @recipe.id, inventory_id: :inventory_id), method: :get do |form| %>    
+    <%= form.hidden_field :recipe_id, value: @recipe.id %>
+    <%= form.collection_select :inventory_id, @inventories.order(:name),:id,:name, :include_blank => "--Select inventory--" %>
+    <%= form.submit "Generate Shopping List" %>
+  <% end %>
+
+</section>

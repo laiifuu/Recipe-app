@@ -1,14 +1,8 @@
 <div> Shopping List </div>
 
-<div> Amount of foods that you have to buy </div>
+<div> Amount of foods that you have to buy <%= @arr1.length + @arr2.length %> </div>
 
-<div> Total value of food needed </div>
-
-<div> <% @food_of_inventory.each do |food| %> 
-            <%= food.food.name %>
-        <% end %>
-    </div>
-
+<div> Total value of food needed <%= @total %> </div>
 
 <table>
     <tr>

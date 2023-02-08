@@ -2,6 +2,7 @@ class ShoppingListController < ApplicationController
     def index
         @arr1 = []
         @arr2 = []
+        @arr3 = []
 
         @food_of_recipe = RecipeFood.includes(:food).where(recipe_id: 2)
         @food_of_recipe.each do |food|
@@ -27,6 +28,12 @@ class ShoppingListController < ApplicationController
                     end
                 end
             end
+        end
+
+        @total = 0
+        @arr3 = [*@arr1, *@arr2]
+        @arr3.each do |item3|
+            @total += item3[:quantity] * item3[:price]
         end
 
 

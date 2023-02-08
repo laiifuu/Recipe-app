@@ -7,7 +7,10 @@
           <h2> <%= recipe.name %> </h2>
           <h3> <%= recipe.user.name %>
           <p> <%= recipe.description %> </p>
+          <p>Total food items: <%= recipe.foods.length %> </p>
+          <p>Total price $: <%= recipe.total_price%> </p>
           
+          </p>
           <div>
             <%= button_to "Check Recipe Details", recipe_path(recipe.id), method: :get%>
           </div>

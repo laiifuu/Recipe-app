@@ -8,8 +8,8 @@
 </div>
 
 <div> 
-    <p>Recipe: <span class="secondary"><%= @recipe.name%></span></p>
-    <p>Inventory: <span class="secondary"><%=  @inventory.name%></span> </p>
+    <p>Recipe: <span class="secondary"><%= Recipe.find(params[:recipe_id]).name%></span></p>
+    <p>Inventory: <span class="secondary"><%=  Inventory.find(params[:inventory_id]).name%></span> </p>
 </div>
 
 </div>

@@ -1,11 +1,10 @@
 :root {
   --background-color: #0f0e17;
   --header-color: #fffffe;
-  --text-color: #a7a9be; 
+  --text-color: #a7a9be;
   --button-bg: #ff8906; /* same as highlight */
   --secondary: #f25f4c;
   --tertiary: #e53170;
-
   --card-background: #fffffe;
   --card-paragraph: #2e2f3e;
   --card-headline: #0f0e17;
@@ -16,16 +15,18 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+
   /* border: 1px solid blueviolet; */
 }
 
-body{
+body {
   padding: 20px;
   background-color: var(--background-color);
-  color: var( --text-color);
+  color: var(--text-color);
 }
 
-input ,textarea {
+input,
+textarea {
   padding: 10px;
   background-color: var(--card-background);
   border-radius: 4px;
@@ -33,23 +34,23 @@ input ,textarea {
 }
 
 button,
-input[type="submit"]  {
+input[type="submit"] {
   border: none;
   background-color: var(--button-bg);
   padding: 8px;
   border-radius: 4px;
   cursor: pointer;
-  color: var( --header-color);
+  color: var(--header-color);
   font-weight: 700;
 }
 
 select {
-  padding: 8px;
   border: none;
   padding: 10px;
   border-radius: 4px;
   background-color: var(--card-background);
 }
+
 a {
   color: var(--tertiary);
   font-weight: 700;
@@ -72,15 +73,21 @@ select {
   font: inherit;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  color:var(--header-color);
-
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--header-color);
 }
+
 .field {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
+
 .disappear {
   display: none;
 }
@@ -89,6 +96,7 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--secondary);
   font-weight: 600;
 }
+
 .hidden {
   visibility: hidden;
 }
@@ -105,7 +113,9 @@ main {
   gap: 30px;
 }
 
-.new-user-form, .create-food-form, .add-recipe-form {
+.new-user-form,
+.create-food-form,
+.add-recipe-form {
   width: 100%;
   padding: 20px;
   display: flex;
@@ -115,13 +125,15 @@ main {
   border-radius: 4px;
 }
 
-.new-user-form > form, .create-food-form > form, .add-recipe-form > form{
+.new-user-form > form,
+.create-food-form > form,
+.add-recipe-form > form {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-.new-user-form > h1{
+.new-user-form > h1 {
   text-align: center;
 }
 
@@ -131,20 +143,21 @@ main {
   align-items: center;
 }
 
-.shared_links{
+.shared_links {
   display: flex;
   flex-direction: column;
-  gap: 20px; 
+  gap: 20px;
   justify-content: center;
   align-items: center;
 }
 
-.actions > input, input[type="submit"] {
+.actions > input,
+input[type="submit"] {
   width: 100%;
   margin-top: 20px;
 }
 
-@media (min-width: 400px){
+@media (min-width: 400px) {
   .new-user-form {
     max-width: 400px;
   }
@@ -160,29 +173,36 @@ table {
   width: 100%;
 }
 
-table, th, td {
+table,
+th,
+td {
   border: 1px solid var(--card-highlight);
   border-collapse: collapse;
 }
 
-th, td {
+th,
+td {
   padding: 5px;
-} 
+}
 
 th {
   color: var(--header-color);
   font-weight: 700;
 }
 
-.recipes-section, .public-recipes-section, .inventories-section, 
-.add-food-section, .shopping-list-section, .add-recipe-section {
+.recipes-section,
+.public-recipes-section,
+.inventories-section,
+.add-food-section,
+.shopping-list-section,
+.add-recipe-section {
   padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 30px;
 }
 
-.section-title{
+.section-title {
   text-align: center;
 }
 
@@ -192,11 +212,13 @@ th {
   gap: 10px;
 }
 
-.recipes-list, .inventories-list {
+.recipes-list,
+.inventories-list {
   display: flex;
   flex-direction: column;
-  gap:20px;
+  gap: 20px;
 }
+
 .recipe-card {
   border: 1px solid var(--card-highlight);
   padding: 20px;
@@ -212,8 +234,9 @@ th {
   gap: 10px;
 }
 
-@media (min-width: 768px){
-  .recipe-card, .inventory-card{
+@media (min-width: 768px) {
+  .recipe-card,
+  .inventory-card {
     max-width: 660px;
   }
 }
@@ -245,8 +268,8 @@ th {
   width: 100%;
 }
 
-@media (min-width: 450px){
-  .recipe-article{
+@media (min-width: 450px) {
+  .recipe-article {
     max-width: 450px;
   }
 }
@@ -275,15 +298,17 @@ th {
   border-radius: 4px;
 }
 
-.inv-info, .rec-info {
+.inv-info,
+.rec-info {
   flex: 1.5;
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-.inv-desc, .rec-desc {
-  flex:2;
+.inv-desc,
+.rec-desc {
+  flex: 2;
 }
 
 .add-inventory-form {
@@ -296,10 +321,9 @@ th {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  
 }
 
-.inventory-article > form{
+.inventory-article > form {
   align-self: flex-end;
   padding-bottom: 20px;
   width: 100%;
@@ -315,21 +339,21 @@ th {
 }
 
 .popup {
-     position: fixed;
-    z-index: 999;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.8);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 30px;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 30px;
 }
 
 .popup-form {
@@ -340,7 +364,6 @@ th {
   gap: 20px;
   border-radius: 4px;
   margin: 20px;
-  padding: 20PX;
   background-color: var(--background-color);
 }
 
@@ -370,4 +393,3 @@ th {
   margin-top: 0;
   flex: 0.5;
 }
-

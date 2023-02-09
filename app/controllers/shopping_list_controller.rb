@@ -21,7 +21,7 @@ class ShoppingListController < ApplicationController
     end
 
     @final.each do |item|
-        @total += item[:quantity] * item[:price]
+      @total += item[:quantity] * item[:price]
     end
   end
 end

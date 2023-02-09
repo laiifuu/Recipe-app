@@ -69,7 +69,6 @@
   <h1>Generating Shopping List</h1>
   <p>Choose an inventory to use</p>
 
-  link_to "Ruby on Rails search", controller: "searches", query: "ruby on rails"
   <%= form_with url: shopping_list_index_path(recipe_id: @recipe.id, inventory_id: :inventory_id), method: :get do |form| %>    
     <%= form.hidden_field :recipe_id, value: @recipe.id %>
     <%= form.collection_select :inventory_id, @inventories.order(:name),:id,:name, :include_blank => "--Select inventory--" %>

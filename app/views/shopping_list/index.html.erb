@@ -4,7 +4,6 @@
 
 <div> Total value of food needed <%= @total %> </div>
 
-
 <table>
     <tr>
         <th>Food</th>
@@ -12,13 +11,6 @@
         <th>Price</th>
     </tr>
 
-    <% @arr1.each do |food| %>
-        <tr>
-            <td> <%= food[:name] %> </td>
-            <td> <%= food[:quantity] %> </td>
-            <td> <%= food[:price] %> </td>
-        </tr>
-    <% end %>
     <% @arr2.each do |food| %>
         <tr>
             <td> <%= food[:name] %> </td>

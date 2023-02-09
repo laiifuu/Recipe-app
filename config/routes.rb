@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
-  # root "foods#index"
+  root "recipes#index"
 
   resources :foods, only: [:index, :create, :destroy, :new]
   resources :recipes, only: [:show, :index, :destroy, :create, :new]

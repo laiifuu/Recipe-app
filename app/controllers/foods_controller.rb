@@ -42,6 +42,6 @@ class FoodsController < ApplicationController
     else
       flash.now[:error] = 'Post could not be destroyed'
     end
-    redirect_to request.original_url
+    redirect_to foods_path
   end
 end

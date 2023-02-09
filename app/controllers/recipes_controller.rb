@@ -10,6 +10,7 @@ class RecipesController < ApplicationController
       .joins(:food)
       .select('foods.id as food_id, name as food_name, quantity, price, quantity * price as value, recipe_id')
       .where(recipe_id: params[:id])
+    @inventories = Inventory.where(user: current_user)
   end
 
   def new

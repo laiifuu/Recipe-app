@@ -1,23 +1,62 @@
-<div class='create-food'>
-  <h1 class='create-food-header'>Add a new food item</h1>
+<section class="add-food-section">
+<h1 class='section-title'>Add a new food item</h1>
+<div class='create-food-form'>
   <%= form_with model: @food, url: foods_path do |f| %>
-    <%= f.text_field :name, placeholder: 'Name' %>
-    <%= f.text_field :measurement_unit, placeholder: 'Measurement unit' %>
-    <%= f.number_field :price, placeholder: 'Price ($)' %>
-    <%= f.collection_select :recipe_id, @recipes.order(:name),:id,:name, include_blank: true %>
-    <%= f.number_field :recipe_quantity, placeholder: 'Quantity (Recipe)' %>
-    <%= f.collection_select :inventory_id, @inventories.order(:name),:id,:name, include_blank: true %>
-    <%= f.number_field :inventory_quantity, placeholder: 'Quantity (Inventory)' %>
+    <div class="field">
+      <%= f.label :name %>
+      <%= f.text_field :name, placeholder: 'Name' %>
+    </div>
+   
+    <div class="field">
+      <%= f.label :measurement_unit %>
+      <%= f.text_field :measurement_unit, placeholder: 'Measurement unit' %>
+    </div>
+
+    <div class="field">
+    <%= f.label :price %>
+     <%= f.number_field :price, placeholder: 'Price ($)' %>
+  </div>
+
+  <div class="field">
+  <%= f.label :recipe_id %>
+  <%= f.collection_select :recipe_id, @recipes.order(:name),:id,:name, include_blank: "--Choose Recipe--" %>
+  </div>
+
+<div class="field">
+<%= f.label :recipe_quantity %>
+<%= f.number_field :recipe_quantity, placeholder: 'Quantity (Recipe)' %>
+
+</div>
+
+<div class="field">
+<%= f.label :inventory_id %>
+<%= f.collection_select :inventory_id, @inventories.order(:name),:id,:name, include_blank: "--Choose Inventory--" %>
+
+</div>
+
+<div class="field">
+<%= f.label :inventory_quantity %>
+<%= f.number_field :inventory_quantity, placeholder: 'Quantity (Inventory)' %>
+</div>
     <%= f.submit %>
   <% end %>
 </div>
+<div class="call-to-create">
+<p>Would you like to create a new inventory? </p>
 <%= link_to inventories_path do %>
   <button type='button' name='create_food' class'button'>
     Add inventory
   </button>
 <% end %>
+</div>
+
+<div class="call-to-create">
+<p>Would you like to create a new recipe? </p>
 <%= link_to new_recipe_path do %>
   <button type='button' name='create_food' class'button'>
     Add recipe
   </button>
 <% end %>
+</div>
+
+</section>

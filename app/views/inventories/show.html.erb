@@ -1,22 +1,27 @@
-<h1>
-    <%= @inventory.name %>
+<article class="inventory-article">
+
+<h1 class="section-title">
+<%= @inventory.name %>
 </h1>
+
 <%= button_to "Add food", new_food_path, method: :get %>
-<hr>
 
 <table>
+<tr>
+    <th>Food</th>
+    <th>Quantity</th>
+    <th>Actions</th>
+</tr>
+<% @inventory.inventory_food.includes(:food).each do |invfoo| %>
     <tr>
-        <th>Food</th>
-        <th>Quantity</th>
-        <th>Actions</th>
+        <td> <%= invfoo.food.name %> </td>
+        <td> <%= invfoo.quantity %> </td>
+        <td>
+            <%= button_to "Remove", food_path(invfoo.food.id), method: :delete %>
+        </td>
     </tr>
-    <% @inventory.inventory_food.includes(:food).each do |invfoo| %>
-        <tr>
-            <td> <%= invfoo.food.name %> </td>
-            <td> <%= invfoo.quantity %> </td>
-            <td>
-                <%= button_to "Remove", food_path(invfoo.food.id), method: :delete %>
-            </td>
-        </tr>
-    <% end %>
+<% end %>
 </table>
+
+</article>
+

@@ -23,5 +23,8 @@ class ShoppingListController < ApplicationController
     @final.each do |item|
       @total += item[:quantity] * item[:price]
     end
+
+    @recipe = Recipe.find(params[:recipe_id])
+    @inventory = Inventory.find(params[:inventory_id])
   end
 end

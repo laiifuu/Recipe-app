@@ -1,9 +1,18 @@
-<div> Shopping List </div>
+<section class="shopping-list-section">
+<h1 class="section-title"> Shopping List </h1>
 
-<div> Amount of foods that you have to buy <%= @final.length %> </div>
+<div class="row">
+<div> 
+    <p>Amount of foods that you have to buy: <span class="secondary"><%= @final.length %></span></p>
+    <p>Total value of food needed: <span class="secondary"><%= @total %></span> </p>
+</div>
 
-<div> Total value of food needed <%= @total %> </div>
+<div> 
+    <p>Recipe: <span class="secondary"><%= @recipe.name%></span></p>
+    <p>Inventory: <span class="secondary"><%=  @inventory.name%></span> </p>
+</div>
 
+</div>
 <table>
     <tr>
         <th>Food</th>
@@ -19,3 +28,7 @@
         </tr>
     <% end %>
 </table>
+
+</section>
+
+

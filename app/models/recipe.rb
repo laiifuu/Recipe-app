@@ -3,6 +3,8 @@ class Recipe < ApplicationRecord
   has_many :recipe_foods
   has_many :foods, through: :recipe_foods
 
+  validates :name, :description, :public, :cooking_time, :preparation_time, presence: true
+
   def total_price
     record = Food.joins(:recipe_foods).select('sum(price*quantity) as total').group(:recipe_id).having('recipe_id = ?',
                                                                                                        id)

@@ -1,6 +1,7 @@
 class ShoppingListController < ApplicationController
   def index
     @final = []
+    @total = 0
 
     @food_of_inventory = InventoryFood.includes(:food).where(inventory_id: params[:inventory_id])
     @food_of_recipe = RecipeFood.includes(:food).where(recipe_id: params[:recipe_id])
@@ -17,6 +18,10 @@ class ShoppingListController < ApplicationController
         end
       end
       @final << { name: food1.food.name, quantity: food1.quantity, price: food1.food.price } if k.zero?
+    end
+
+    @final.each do |item|
+        @total += item[:quantity] * item[:price]
     end
   end
 end

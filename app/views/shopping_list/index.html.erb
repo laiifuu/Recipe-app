@@ -1,6 +1,6 @@
 <div> Shopping List </div>
 
-<div> Amount of foods that you have to buy <%= @arr1.length + @arr2.length %> </div>
+<div> Amount of foods that you have to buy <%= @final.length %> </div>
 
 <div> Total value of food needed <%= @total %> </div>
 
@@ -11,7 +11,7 @@
         <th>Price</th>
     </tr>
 
-    <% @arr2.each do |food| %>
+    <% @final.each do |food| %>
         <tr>
             <td> <%= food[:name] %> </td>
             <td> <%= food[:quantity] %> </td>

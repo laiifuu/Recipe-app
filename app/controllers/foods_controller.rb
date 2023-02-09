@@ -23,15 +23,20 @@ class FoodsController < ApplicationController
   def create
     data = params[:food]
     new_food = Food.new(name: data[:name], measurement_unit: data[:measurement_unit], price: data[:price])
-    if new_food.save && new_food.id?
-      RecipeFood.create(quantity: data[:recipe_quantity], recipe_id: data[:recipe_id], food_id: new_food.id)
-      InventoryFood.create(quantity: data[:inventory_quantity], inventory_id: data[:inventory_id], food_id: new_food.id)
-      flash[:success] = 'Food has been added'
-      redirect_to foods_path
+    if (data[:recipe_quantity] && data[:recipe_id]) || (data[:inventory_quantity] && data[:inventory_id])
+      if new_food.save
+        RecipeFood.create(quantity: data[:recipe_quantity], recipe_id: data[:recipe_id], food_id: new_food.id)
+        InventoryFood.create(quantity: data[:inventory_quantity], inventory_id: data[:inventory_id],
+                             food_id: new_food.id)
+        flash[:success] = 'Food has been added'
+      else
+        flash.now[:error] = 'Food could not be added'
+        render new_food_path
+      end
     else
-      flash.now[:error] = 'Food could not be added'
       render new_food_path
     end
+    redirect_to foods_path
   end
 
   def destroy

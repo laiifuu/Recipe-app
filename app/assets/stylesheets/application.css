@@ -17,3 +17,7 @@
 .disappear {
   display: none;
 }
+
+.hidden {
+  visibility: hidden;
+}

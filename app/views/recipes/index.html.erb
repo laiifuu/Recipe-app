@@ -9,7 +9,7 @@
           <p> <%= recipe.description %> </p>
           
           <div>
-            <% if current_user.id == @user.id%>
+            <% if can? :destroy, recipe %>
               <%= button_to "Delete Recipe", recipe_path(recipe.id), method: :delete, data: {turbo: false}%>
             <% end %>
             <%= button_to "Check Recipe Details", recipe_path(recipe.id), method: :get%>

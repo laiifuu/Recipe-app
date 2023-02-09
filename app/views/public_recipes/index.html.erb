@@ -13,6 +13,9 @@
           </p>
           <div>
             <%= button_to "Check Recipe Details", recipe_path(recipe.id), method: :get%>
+            <% if can? :destroy, recipe %>
+              <%= button_to "Delete Recipe", recipe_path(recipe.id), method: :delete, data: {turbo: false}%>
+            <% end %>
           </div>
         </li>
       <% end %>

@@ -1,7 +1,7 @@
 class RecipesController < ApplicationController
   def index
     @user = current_user
-    @recipes = @user.recipes # I dont know how to add the n+1 thingy x)
+    @recipes = @user.recipes
   end
 
   def show
@@ -24,7 +24,7 @@ class RecipesController < ApplicationController
       flash[:success] = 'New recipe created.'
       redirect_to recipes_path
     else
-      render :new
+      redirect_to new_recipe_path
     end
   end
 

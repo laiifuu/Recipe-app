@@ -1,0 +1,36 @@
+<section class="add-recipe-section">
+  <h1 class="section-title">Add a new recipe:</h1>
+
+  <div class="add-recipe-form">
+  <%= form_with model: @recipe, url: recipes_path do |form| %>    
+    <div class="field">
+      <%= form.label :name %>
+      <%= form.text_field :name %>
+    </div>
+    <div class="field">
+      <%= form.label :description %>
+      <%= form.text_area :description %>
+    </div>
+    <div class="field">
+      <%= form.label :preparation_time %>
+      <%= form.number_field :preparation_time %>
+    </div>
+    <div class="field">
+      <%= form.label :cooking_time %>
+      <%= form.number_field :cooking_time %>
+    </div>
+    <div class="field row">
+      <div class="remember-me">
+      <%= form.radio_button :public, "true" %>
+      <%= form.label :public_field, "Public" %>
+      </div>
+      <div class="remember-me">
+      <%= form.radio_button :public, "false" %>
+      <%= form.label :private_field, "Private" %>
+      </div>
+    </div>
+    <%= form.submit %>
+  <% end %>
+
+  </div>
+</section>

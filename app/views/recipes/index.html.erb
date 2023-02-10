@@ -1,0 +1,24 @@
+<section class="recipes-section">  
+  <h1 class="section-title">My recipes</h1>
+  <div class="recipes-container">
+    <ul class="recipes-list"> 
+      <% @recipes.each do |recipe| %>
+        <li>
+          <div class="recipe-card">
+          <div class="rec-info">
+            <h2>  <%= link_to recipe.name, recipe_path(recipe.id) %> </h2>
+          
+              <% if can? :destroy, recipe %>
+                <%= button_to "Delete Recipe", recipe_path(recipe.id), method: :delete, data: {turbo: false}%>
+              <% end %>
+          </div>
+          
+          <div class="rec-desc"> <%= recipe.description %> </div>
+          </div>
+          
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  <%= button_to "Add Recipe", new_recipe_path, method: :get%>
+</section>

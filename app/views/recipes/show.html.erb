@@ -1,0 +1,78 @@
+<article class="recipe-article">
+  <h1> <%= @recipe.name %> </h1>
+  <div class="recipe-details">
+    <div class="details"> 
+      <p>Preparation time: <span class="secondary"><%= @recipe.preparation_time %> 
+        <% if @recipe.preparation_time == 1 %>
+          hour
+        <% else %>
+          hours
+        <% end %>
+      </span></p>
+
+      <p>Cooking time: <span class="secondary"><%= @recipe.cooking_time %> 
+        <% if @recipe.cooking_time == 1 %>
+          hour
+        <% else %>
+          hours
+        <% end %>
+      </span></p>
+
+      <p>Steps go here...</p>
+
+    </div>
+    
+    <div class="public-toggle">
+      Status:  
+        <% if @recipe.public %>
+        <span class="secondary">Public</span>
+        <% else %>
+        <span class="secondary">Private</span>
+        <% end %>
+    </div>
+  </div>
+
+  <div class="recipe-controls">
+    <button class="gen-popup"> Generate shopping list </button>
+    <%= button_to "Add ingredient", new_food_path, method: :get, params: {adding_ingredient: true, recipe_id: @recipe.id} %>
+  </div>
+
+  <section class="recipe-ingredients-table">
+  <table>
+  <thead>
+      <tr>
+          <th>Food</th>
+          <th>Quantity</th>
+          <th>Price</th>
+          <th>Value</th>
+          <th>Actions</th>
+      </tr>
+  </thead>
+  <tbody>
+    <% @foods.each do |food| %>
+      <tr>
+          <td><%= food.food_name %></td>
+          <td><%= food.quantity %> </td>
+          <td><%= food.price %> </td>
+          <td><%= food.value %> </td>
+          <td><%= button_to "Remove", food_path(food.food_id), method: :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+  </section>
+</article>
+
+<section class="popup hidden">
+
+  <div class="popup-form">
+  <button class="close-popup">close</button>
+  <h1>Generating Shopping List</h1>
+  <%= form_with url: shopping_list_index_path(recipe_id: @recipe.id, inventory_id: :inventory_id), method: :get do |form| %>    
+    <%= form.hidden_field :recipe_id, value: @recipe.id %>
+    <%= form.collection_select :inventory_id, @inventories.order(:name),:id,:name, :include_blank => "--Select inventory--" %>
+    <%= form.submit "Generate Shopping List" %>
+  <% end %>
+  </div>
+  
+</section>

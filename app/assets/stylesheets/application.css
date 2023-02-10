@@ -185,6 +185,7 @@ td {
 th,
 td {
   padding: 5px;
+  text-align: center;
 }
 
 th {
@@ -271,7 +272,7 @@ th {
 }
 
 @media (min-width: 450px) {
-  .recipe-article {
+  .recipe-article, .inventory-article {
     max-width: 450px;
   }
 }
@@ -311,6 +312,8 @@ th {
 .inv-desc,
 .rec-desc {
   flex: 2;
+  text-overflow:ellipsis;
+  word-break: break-word;
 }
 
 .add-inventory-form {

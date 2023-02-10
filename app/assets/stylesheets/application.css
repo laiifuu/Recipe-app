@@ -115,7 +115,7 @@ main {
 
 .new-user-form,
 .create-food-form,
-.add-recipe-form, 
+.add-recipe-form,
 .registration-form {
   width: 100%;
   padding: 20px;
@@ -128,7 +128,7 @@ main {
 
 .new-user-form > form,
 .create-food-form > form,
-.add-recipe-form > form, 
+.add-recipe-form > form,
 .registration-form > form {
   display: flex;
   flex-direction: column;
@@ -160,7 +160,8 @@ input[type="submit"] {
 }
 
 @media (min-width: 400px) {
-  .new-user-form, .registration-form {
+  .new-user-form,
+  .registration-form {
     max-width: 400px;
   }
 }
@@ -272,7 +273,8 @@ th {
 }
 
 @media (min-width: 450px) {
-  .recipe-article, .inventory-article {
+  .recipe-article,
+  .inventory-article {
     max-width: 450px;
   }
 }
@@ -312,7 +314,7 @@ th {
 .inv-desc,
 .rec-desc {
   flex: 2;
-  text-overflow:ellipsis;
+  text-overflow: ellipsis;
   word-break: break-word;
 }
 

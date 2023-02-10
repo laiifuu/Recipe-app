@@ -395,3 +395,7 @@ th {
   margin-top: 0;
   flex: 0.5;
 }
+
+.user-food-link {
+  color: var(--secondary);
+}

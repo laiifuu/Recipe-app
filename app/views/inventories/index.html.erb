@@ -1,17 +1,32 @@
+<section class="inventories-section">
+<h1 class="section-title">My Inventories</h1>
+<ul class="inventories-list">
 <% @inventories.each do |inv| %>
-    <div>
+    <li>
+    <div class="inventory-card">
+      <div class="inv-info">
         <h2> 
-            <%= link_to inv.name, inventory_path(inv.id) %>
+           <%= link_to inv.name, inventory_path(inv.id) %>
         </h2>
         <% if can? :destroy, inv %>
             <%= button_to "Remove", inventory_path(inv.id), method: :delete, data: { turbo: false } %>
         <% end %>
-    </div>
-    <div>
+      </div>
+
+      <div class="inv-desc">
         So much text and lorem ipsum stuff So much text and lorem ipsum stuff So much text and lorem ipsum stuff So much text and lorem ipsum stuff
+      </div>
     </div>
+    </li>
 <% end %>
-<%= form_with model: @inventory, method: :post, url: inventories_path do |form| %>
-    <%= form.text_area :name %>
+</ul>
+<%= form_with model: @inventory, method: :post, url: inventories_path, html: {class: 'add-inventory-form'} do |form| %>
+    <%= form.text_field :name %>
     <%= form.submit "Add inventory" %>
 <% end %>
+
+</section
+
+
+
+

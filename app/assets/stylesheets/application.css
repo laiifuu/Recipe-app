@@ -1,23 +1,406 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+:root {
+  --background-color: #0f0e17;
+  --header-color: #fffffe;
+  --text-color: #a7a9be;
+  --button-bg: #ff8906; /* same as highlight */
+  --secondary: #f25f4c;
+  --tertiary: #e53170;
+  --card-background: #fffffe;
+  --card-paragraph: #2e2f3e;
+  --card-headline: #0f0e17;
+  --card-highlight: #e53170;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  /* border: 1px solid blueviolet; */
+}
+
+body {
+  padding: 20px;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+input,
+textarea {
+  padding: 10px;
+  background-color: var(--card-background);
+  border-radius: 4px;
+  border: none;
+}
+
+button,
+input[type="submit"] {
+  border: none;
+  background-color: var(--button-bg);
+  padding: 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  color: var(--header-color);
+  font-weight: 700;
+}
+
+select {
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  background-color: var(--card-background);
+}
+
+a {
+  color: var(--tertiary);
+  font-weight: 700;
+}
+
+ul {
+  list-style: none;
+}
+
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--header-color);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
 
 .disappear {
   display: none;
 }
 
+.secondary {
+  color: var(--secondary);
+  font-weight: 600;
+}
+
 .hidden {
   visibility: hidden;
+}
+
+/* input, textarea {
+  width: 100%;
+} */
+main {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.new-user-form,
+.create-food-form,
+.add-recipe-form,
+.registration-form {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border: 1px solid #f25f4c;
+  border-radius: 4px;
+}
+
+.new-user-form > form,
+.create-food-form > form,
+.add-recipe-form > form,
+.registration-form > form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.new-user-form > h1 {
+  text-align: center;
+}
+
+.remember-me {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.shared_links {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.actions > input,
+input[type="submit"] {
+  width: 100%;
+  margin-top: 20px;
+}
+
+@media (min-width: 400px) {
+  .new-user-form,
+  .registration-form {
+    max-width: 400px;
+  }
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+table {
+  width: 100%;
+}
+
+table,
+th,
+td {
+  border: 1px solid var(--card-highlight);
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 5px;
+  text-align: center;
+}
+
+th {
+  color: var(--header-color);
+  font-weight: 700;
+}
+
+.recipes-section,
+.public-recipes-section,
+.inventories-section,
+.add-food-section,
+.shopping-list-section,
+.add-recipe-section {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.section-title {
+  text-align: center;
+}
+
+.nav-list {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.recipes-list,
+.inventories-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.recipe-card {
+  border: 1px solid var(--card-highlight);
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  border-radius: 4px;
+}
+
+.recipe-controls {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+}
+
+@media (min-width: 768px) {
+  .recipe-card,
+  .inventory-card {
+    max-width: 660px;
+  }
+}
+
+.recipe-article {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.recipe-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.recipe-article > .recipe-controls {
+  justify-content: space-between;
+  width: 100%;
+  border-bottom: 1px solid var(--tertiary);
+  padding-bottom: 20px;
+}
+
+.recipe-ingredients-table {
+  width: 100%;
+}
+
+@media (min-width: 450px) {
+  .recipe-article,
+  .inventory-article {
+    max-width: 450px;
+  }
+}
+
+.foods-section {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  gap: 30px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+}
+
+.inventory-card {
+  display: flex;
+  flex-wrap: wrap;
+  border: 1px solid var(--card-highlight);
+  padding: 20px;
+  gap: 10px;
+  border-radius: 4px;
+}
+
+.inv-info,
+.rec-info {
+  flex: 1.5;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.inv-desc,
+.rec-desc {
+  flex: 2;
+  text-overflow: ellipsis;
+  word-break: break-word;
+}
+
+.add-inventory-form {
+  display: flex;
+  gap: 20px;
+}
+
+.inventory-article {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.inventory-article > form {
+  align-self: flex-end;
+  padding-bottom: 20px;
+  width: 100%;
+  border-bottom: 1px solid var(--tertiary);
+  text-align: end;
+}
+
+.call-to-create {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.popup {
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.popup-form {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--card-highlight);
+  padding: 20px;
+  gap: 20px;
+  border-radius: 4px;
+  margin: 20px;
+  background-color: var(--background-color);
+}
+
+.popup-form select {
+  width: 100%;
+}
+
+.close-popup {
+  align-self: flex-end;
+}
+
+.field.row {
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.add-recipe-form {
+  width: 100%;
+}
+
+.add-inventory-form > input {
+  margin-top: 0;
+  flex: 1;
+}
+
+.add-inventory-form > input[type="submit"] {
+  margin-top: 0;
+  flex: 0.5;
+}
+
+.user-food-link {
+  color: var(--secondary);
 }
